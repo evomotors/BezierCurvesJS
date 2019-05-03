@@ -41,33 +41,12 @@ function GetBezierPoints(b, cpts)
 	return p;
 } 
   
-function factorial(n)
-{
-	if (n < 0)
-		throw 'n is less than 0';
-
-	if (n > 32)
-		throw 'n is greater than 32';
-
-	//returns the value n! as a SUMORealing point number 
-	return FactorialLookup[n];
-}
-
-function Ni(n, i)
-{
-	var a1 = factorial(n);
-	var a2 = factorial(i);
-	var a3 = factorial(n - i);
-	return a1 / (a2 * a3);
-}
-
-// Calculate Bernstein basis
+// Calculates Bernstein basis
 function Bernstein(n, i, t)
 {
-	var ti; // t^i
-	var tni; // (1 - t)^i
+	var ti; 
+	var tni;
 
-	// Prevent problems with pow 
 	if (t == 0.0 && i == 0) 
 		ti = 1.0; 
 	else 
@@ -78,5 +57,5 @@ function Bernstein(n, i, t)
 	else 
 		tni = Math.pow((1 - t), (n - i));
 
-	return Ni(n, i) * ti * tni; 
+	return (FactorialLookup[n] / (FactorialLookup[i] * FactorialLookup[n - i])) * ti * tni; 
 }
