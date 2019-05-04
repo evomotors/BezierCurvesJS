@@ -6,4 +6,4 @@ Bezier curves are the most fundamental curves, used generally in computer graphi
 
 Example:<br/>
 var a = [100, 250, 266, 48, 102, 250, 400, 250];<br/>
-var b = GetBezierPoints(b,500);
+var b = GetBezierPoints(a,500);
